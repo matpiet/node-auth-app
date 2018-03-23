@@ -1,1 +1,14 @@
-Test
+{{>header}}
+<body>
+{{>navbar}}
+<div class='container'>
+  <h2 class='page-header'>Register</h2>
+  <p>Please register using the form below</p>
+  <form method='Post' action='/users/register' enctype='moltipart/form-data'>
+    <div class='form-group'>
+      <label for="name">Name</label>
+      <input name='name' type='text' class="form-control" placeholder='Enter name'>
+    </div>
+</div>
+
+</body>
