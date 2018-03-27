@@ -17,11 +17,11 @@ router.post('/register', upload.single('profileImage'), function(req, res, next)
   var {name, email, username, password, confirmPassword} = req.body;
 
   if(req.file){
-    console.log('File Uploaded Sucessful...');
+    //console.log('File Uploaded Sucessful...');
     var profileImage = req.file.filename;
   }
   else{
-    console.log('No File Uploaded...');
+    //console.log('No File Uploaded...');
     var profileImage = 'noImage.jpg';
   }
 
@@ -36,25 +36,28 @@ router.post('/register', upload.single('profileImage'), function(req, res, next)
 
   if(errors){
     res.render('users/register', {
+      locals:' test',
       errors,
       name
     });
+    //console.log('Errors.');
   } else{
     var newUser = new User({name, email, username, password, profileImage})
-    newUser.save().then(() => {
-
+    newUser.save().then((user) => {
+      //console.log('New User Saved');
+      //console.log(JSON.stringify(user, undefined,3));
     });
 
     // User.createUser(newUser, (err, user) => {
     //   if(err) throw err;
     //   console.log(`User: ${user}`);
     // });
-    console.log('No Errors.');
+    //console.log('No Errors.');
 
     res.render('index', { message : 'You have sucessfully registered.' });
   }
 
-  console.log(`Profile image Name: ${profileImage}`);
+  //console.log(`Profile image Name: ${profileImage}`);
 });
 
 router.get('/login', function(req, res, next) {

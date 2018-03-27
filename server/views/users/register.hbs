@@ -5,9 +5,13 @@
   {{> messagesresult}}
   <h2 class='page-header'>Register</h2>
   <p>Please register using the form below</p>
+  {{#if errors}}
+  <div class='error-messages' >
   {{#each errors}}
   <div class='alert-danger alert'>{{this.msg}}</div>
   {{/each}}
+  </diV>
+  {{/if}}
   <form method='Post' action='/users/register' enctype='multipart/form-data'>
     <div class='form-group'>
       <label for="name">Name</label>
