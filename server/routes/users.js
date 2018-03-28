@@ -46,6 +46,8 @@ router.post('/register', upload.single('profileImage'), function(req, res, next)
     newUser.save().then((user) => {
       //console.log('New User Saved');
       //console.log(JSON.stringify(user, undefined,3));
+      res.render('index', { message : 'You have sucessfully registered.' });
+      next;
     });
 
     // User.createUser(newUser, (err, user) => {
@@ -54,7 +56,7 @@ router.post('/register', upload.single('profileImage'), function(req, res, next)
     // });
     //console.log('No Errors.');
 
-    res.render('index', { message : 'You have sucessfully registered.' });
+
   }
 
   //console.log(`Profile image Name: ${profileImage}`);
